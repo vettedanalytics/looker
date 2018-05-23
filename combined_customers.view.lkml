@@ -7,6 +7,7 @@ view: combined_customers {
       select id, created, 'vetpronto' as company
       from stripe_vetpronto.customers
  ;;
+    distribution_style: all
   }
 
   measure: count {

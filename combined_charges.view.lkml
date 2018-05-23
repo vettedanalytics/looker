@@ -7,6 +7,7 @@ view: combined_charges {
       select amount, card_id, customer_id, id, created, status, failure_code, amount_refunded, 'vetpronto' as company
       from stripe_vetpronto.charges
        ;;
+    distribution_style: all
   }
 
   measure: count {

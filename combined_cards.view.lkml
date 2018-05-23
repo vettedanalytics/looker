@@ -7,6 +7,7 @@ view: combined_cards {
       select address_zip, customer_id, name, 'vetted' as company, id
       from stripe_vetted.cards
        ;;
+    distribution_style: all
   }
 
   measure: count {
