@@ -26,9 +26,4 @@ explore: combined_charges {
     relationship: many_to_one
     view_label: "Customers"
   }
-  join: vetpronto_appointments {
-    sql_on: ${combined_charges.created_date} = ${vetpronto_appointments.created_date} ;;
-    relationship: many_to_many
-    view_label: "Visits"
-  }
 }

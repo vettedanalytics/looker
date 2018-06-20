@@ -1,5 +1,5 @@
-view: vetpronto_users {
-  sql_table_name: public.users ;;
+view: users {
+  sql_table_name: postgres_database.users ;;
 
   dimension: id {
     primary_key: yes
@@ -24,11 +24,6 @@ view: vetpronto_users {
       year
     ]
     sql: ${TABLE}.created_at ;;
-  }
-
-  dimension: email {
-    type: string
-    sql: ${TABLE}.email ;;
   }
 
   dimension: password_digest {
@@ -81,6 +76,6 @@ view: vetpronto_users {
 
   measure: count {
     type: count
-    drill_fields: [id]
+    drill_fields: [id, vets.count]
   }
 }
