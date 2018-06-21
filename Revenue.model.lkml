@@ -13,9 +13,14 @@ datagroup: ryan_test_default_datagroup {
 
 persist_with: ryan_test_default_datagroup
 
-explore: combined_charges {
+explore: appointments {
   label: "Revenue"
-  view_label: "Charges"
+  view_label: "Appointments"
+  join: combined_charges {
+    sql_on: ${appointments.start_date} = ${combined_charges.created_date};;
+    relationship: many_to_many
+    view_label: "Charges"
+  }
   join: combined_cards {
     sql_on: ${combined_charges.customer_id} = ${combined_cards.customer_id};;
     relationship: many_to_many
@@ -26,10 +31,4 @@ explore: combined_charges {
     relationship: many_to_one
     view_label: "Customers"
   }
-  join: appointments {
-    sql_on: ${combined_charges.created_date} = ${appointments.start_date};;
-    relationship: many_to_many
-    view_label: "Appointments"
-  }
-
 }

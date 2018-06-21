@@ -112,7 +112,6 @@ view: appointments {
   dimension_group: start {
     type: time
     sql: ${TABLE}.start_time ;;
-    convert_tz:  no
   }
 
   dimension: state {
