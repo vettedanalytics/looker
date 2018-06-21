@@ -79,11 +79,6 @@ view: appointments {
     sql: ${TABLE}.end_time ;;
   }
 
-  dimension: parking_tips {
-    type: string
-    sql: ${TABLE}.parking_tips ;;
-  }
-
   dimension: phone_number {
     type: string
     sql: ${TABLE}.phone_number ;;
@@ -117,6 +112,7 @@ view: appointments {
   dimension_group: start {
     type: time
     sql: ${TABLE}.start_time ;;
+    convert_tz:  no
   }
 
   dimension: state {
