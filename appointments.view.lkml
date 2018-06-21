@@ -26,30 +26,6 @@ view: appointments {
     sql: ${TABLE}.admin_booked ;;
   }
 
-  dimension_group: annual_exam_reminder_sent {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.annual_exam_reminder_sent ;;
-  }
-
-  dimension: bad_experience {
-    type: yesno
-    sql: ${TABLE}.bad_experience ;;
-  }
-
-  dimension: calendar_id {
-    type: string
-    sql: ${TABLE}.calendar_id ;;
-  }
-
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;
@@ -128,34 +104,6 @@ view: appointments {
     sql: ${TABLE}.quick_booked ;;
   }
 
-  dimension_group: reminder_sent {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.reminder_sent ;;
-  }
-
-  dimension_group: review_request_sent {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.review_request_sent ;;
-  }
-
   dimension: secondary_id {
     type: number
     sql: ${TABLE}.secondary_id ;;
@@ -166,31 +114,8 @@ view: appointments {
     sql: ${TABLE}.service_area_id ;;
   }
 
-  dimension_group: snoozed_until {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.snoozed_until ;;
-  }
-
   dimension_group: start {
     type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
     sql: ${TABLE}.start_time ;;
   }
 
@@ -202,25 +127,6 @@ view: appointments {
   dimension: upcoming_reminder_sent {
     type: yesno
     sql: ${TABLE}.upcoming_reminder_sent ;;
-  }
-
-  dimension_group: updated {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.updated_at ;;
-  }
-
-  dimension: vet_comments {
-    type: string
-    sql: ${TABLE}.vet_comments ;;
   }
 
   dimension: vet_id {

@@ -26,4 +26,10 @@ explore: combined_charges {
     relationship: many_to_one
     view_label: "Customers"
   }
+  join: appointments {
+    sql_on: ${combined_charges.created_hour} = ${appointments.start_hour};;
+    relationship: many_to_one
+    view_label: "Appointments"
+  }
+
 }
