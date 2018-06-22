@@ -1,6 +1,6 @@
 view: combined_cards {
   derived_table: {
-    sql_trigger_value: SELECT COUNT(*) FROM stripe_vetpronto.cards ;;
+    datagroup_trigger: ryan_test_default_datagroup
     sql: select address_zip, customer_id, name, 'vetpronto' as company, id
       from stripe_vetpronto.cards
       union all

@@ -1,6 +1,6 @@
 view: combined_charges {
   derived_table: {
-    sql_trigger_value: SELECT COUNT(*) FROM stripe_vetpronto.charges ;;
+    datagroup_trigger: ryan_test_default_datagroup
     sql: select amount, card_id, customer_id, id, created, status, failure_code, amount_refunded, 'vetted' as company
       from stripe_vetted.charges
       union all

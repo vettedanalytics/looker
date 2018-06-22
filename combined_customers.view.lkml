@@ -1,6 +1,6 @@
 view: combined_customers {
   derived_table: {
-    sql_trigger_value: SELECT COUNT(*) FROM stripe_vetpronto.customers ;;
+    datagroup_trigger: ryan_test_default_datagroup
     sql: select id, created, 'vetted' as company
       from stripe_vetted.customers
       union all
