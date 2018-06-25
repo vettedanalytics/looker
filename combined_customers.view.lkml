@@ -1,10 +1,10 @@
 view: combined_customers {
   derived_table: {
     datagroup_trigger: ryan_test_default_datagroup
-    sql: select id, created, 'vetted' as company
+    sql: select id, created, 'vetted' as company, description
       from stripe_vetted.customers
       union all
-      select id, created, 'vetpronto' as company
+      select id, created, 'vetpronto' as company, description
       from stripe_vetpronto.customers
  ;;
     distribution_style: all
@@ -29,6 +29,11 @@ view: combined_customers {
   dimension: company {
     type: string
     sql: ${TABLE}.company ;;
+  }
+
+  dimension: chargebee_id {
+    type:  string
+    sql: REGEXP_REPLACE(${TABLE}.description, 'ChargeBee handle: ') ;;
   }
 
   set: detail {

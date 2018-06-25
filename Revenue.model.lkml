@@ -32,4 +32,14 @@ explore: appointments {
     relationship: many_to_one
     view_label: "Customers"
   }
+  join: clients {
+    sql_on: ${combined_charges.customer_id} = ${clients.stripe_token};;
+    relationship: many_to_one
+    view_label: "Clients"
+  }
+  join: chargebee_clients {
+    from: clients
+    sql_on: ${combined_customers.chargebee_id} = ${chargebee_clients.chargebee_id} ;;
+    relationship: one_to_one
+  }
 }
