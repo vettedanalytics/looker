@@ -6,8 +6,8 @@ include: "*.view.lkml"
 # include all dashboards in this project
 include: "*.dashboard.lookml"
 
-datagroup: ryan_test_default_datagroup {
-  sql_trigger: select count(*) from stripe_vetpronto.charges;;
+datagroup: adwords_datagroup {
+  sql_trigger: select count(*) from adwords.campaign_performance_reports;;
   max_cache_age: "1 hour"
 }
 

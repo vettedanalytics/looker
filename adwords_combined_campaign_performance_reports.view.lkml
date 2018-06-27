@@ -1,11 +1,13 @@
 view: combined_campaign_performance_reports {
   derived_table: {
+    datagroup_trigger: adwords_datagroup
     sql: select id, adwords_customer_id, base_campaign_id, budget_id, campaign_id, campaign_status, uuid, date_start, date_stop, received_at, uuid_ts, impression_reach, invalid_clicks, is_budget_explicitly_shared, all_conversion_rate, all_conversion_value, all_conversions, value_per_all_conversion, average_cost, average_position, bounce_rate, clicks, conversion_value, conversions, cost, impressions, 'vetted' as company
       from adwords.campaign_performance_reports
       union all
       select id, adwords_customer_id, base_campaign_id, budget_id, campaign_id, campaign_status, uuid, date_start, date_stop, received_at, uuid_ts, impression_reach, invalid_clicks, is_budget_explicitly_shared, all_conversion_rate, all_conversion_value, all_conversions, value_per_all_conversion, average_cost, average_position, bounce_rate, clicks, conversion_value, conversions, cost, impressions, 'vetpronto' as company
       from vetprontoadwords.campaign_performance_reports
        ;;
+      distribution_style: all
   }
 
   dimension: id {
@@ -83,6 +85,7 @@ view: combined_campaign_performance_reports {
       year
     ]
     sql: ${TABLE}.date_start ;;
+    convert_tz: no
   }
 
   dimension_group: stop {
@@ -98,6 +101,7 @@ view: combined_campaign_performance_reports {
     ]
     hidden: yes
     sql: ${TABLE}.date_stop ;;
+    convert_tz: no
   }
 
   dimension_group: received {

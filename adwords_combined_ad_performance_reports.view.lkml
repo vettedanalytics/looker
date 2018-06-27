@@ -1,11 +1,13 @@
 view: combined_ad_performance_reports {
   derived_table: {
+    datagroup_trigger: adwords_datagroup
     sql: select date_start, date_stop, uuid_ts, received_at, ad_id, adwords_customer_id, uuid, average_cost, average_position, average_time_on_site, bounce_rate, clicks, conversions, cost, impressions, 'vetted' as company
       from adwords.ad_performance_reports
       union all
       select date_start, date_stop, uuid_ts, received_at, ad_id, adwords_customer_id, uuid, average_cost, average_position, average_time_on_site, bounce_rate, clicks, conversions, cost, impressions, 'vetpronto' as company
       from vetprontoadwords.ad_performance_reports
        ;;
+      distribution_style: all
   }
 
  dimension: id {
@@ -52,6 +54,7 @@ dimension_group: date_start {
     year
   ]
   sql: ${TABLE}.date_start ;;
+  convert_tz: no
 }
 
 dimension_group: date_stop {
@@ -67,6 +70,7 @@ dimension_group: date_stop {
   ]
   hidden: yes
   sql: ${TABLE}.date_stop ;;
+  convert_tz: no
 }
 
 dimension_group: uuid_ts {
