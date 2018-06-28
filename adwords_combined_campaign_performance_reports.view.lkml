@@ -32,9 +32,12 @@ view: combined_campaign_performance_reports {
   dimension: adwords_customer_id {
     type: string
     sql: ${TABLE}.adwords_customer_id ;;
-    hidden: yes
   }
 
+  dimension: account_name {
+    type:  string
+    sql:  case when ${adwords_customer_id} = 5292223433 then 'VetPronto' when ${adwords_customer_id} = 2054154801 then 'Vetted' else null end;;
+  }
   dimension: base_campaign_id {
     type: string
     sql: ${TABLE}.base_campaign_id ;;
@@ -82,7 +85,9 @@ view: combined_campaign_performance_reports {
       week,
       month,
       quarter,
-      year
+      year,
+      day_of_week,
+      time_of_day
     ]
     sql: ${TABLE}.date_start ;;
     convert_tz: no
