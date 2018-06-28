@@ -8,14 +8,14 @@ view: segment_aliases_mapping {
         select anonymous_id
         , user_id
         , received_at as received_at
-        from segment.tracks
+        from ${segment_combined_tracks.SQL_TABLE_NAME}
 
         union
 
         select user_id
           , null
           , received_at
-        from segment.tracks
+        from ${segment_combined_tracks.SQL_TABLE_NAME}
       )
 
       select
