@@ -6,7 +6,6 @@ include: "*.view.lkml"
 # include all dashboards in this project
 include: "*.dashboard.lookml"
 
-
 datagroup: segment_datagroup {
   sql_trigger: select count(*) from javascript.tracks;;
   max_cache_age: "1 hour"
