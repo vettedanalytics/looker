@@ -1,5 +1,28 @@
-view: booking_booking_confirmed {
-  sql_table_name: vethub.booking_booking_confirmed ;;
+view: vethub_tracks {
+  sql_table_name: vethub.tracks ;;
+
+  measure: offline_bookings {
+    type: count_distinct
+    sql:  ${TABLE}.id;;
+    filters: {
+      field: event
+      value: "booking_booking_confirmed"
+    }
+  }
+
+  measure: cancellations {
+    type: count_distinct
+    sql:  ${TABLE}.id;;
+    filters: {
+      field: event
+      value: "cancellation_visit"
+    }
+  }
+
+  measure: net_bookings {
+    type: number
+    sql: ${offline_bookings} - ${cancellations} ;;
+  }
 
   dimension: id {
     primary_key: yes
@@ -7,24 +30,16 @@ view: booking_booking_confirmed {
     sql: ${TABLE}.id ;;
   }
 
-  dimension: context_library_name {
+  dimension: anonymous_id {
     type: string
-    sql: ${TABLE}.context_library_name ;;
-  }
-
-  dimension: context_library_version {
-    type: string
-    sql: ${TABLE}.context_library_version ;;
-  }
-
-  dimension: doctor {
-    type: string
-    sql: ${TABLE}.doctor ;;
+    sql: ${TABLE}.anonymous_id ;;
+    hidden: yes
   }
 
   dimension: event {
     type: string
     sql: ${TABLE}.event ;;
+    hidden: yes
   }
 
   dimension: event_text {
@@ -44,6 +59,7 @@ view: booking_booking_confirmed {
       year
     ]
     sql: ${TABLE}.original_timestamp ;;
+    hidden: yes
   }
 
   dimension_group: received {
@@ -58,6 +74,7 @@ view: booking_booking_confirmed {
       year
     ]
     sql: ${TABLE}.received_at ;;
+    hidden: yes
   }
 
   dimension_group: sent {
@@ -72,6 +89,7 @@ view: booking_booking_confirmed {
       year
     ]
     sql: ${TABLE}.sent_at ;;
+    hidden: yes
   }
 
   dimension_group: timestamp {
@@ -88,11 +106,6 @@ view: booking_booking_confirmed {
     sql: ${TABLE}.timestamp ;;
   }
 
-  dimension: type {
-    type: string
-    sql: ${TABLE}.type ;;
-  }
-
   dimension: user_id {
     type: string
     sql: ${TABLE}.user_id ;;
@@ -102,6 +115,7 @@ view: booking_booking_confirmed {
     type: number
     value_format_name: id
     sql: ${TABLE}.uuid ;;
+    hidden: yes
   }
 
   dimension_group: uuid_ts {
@@ -116,10 +130,6 @@ view: booking_booking_confirmed {
       year
     ]
     sql: ${TABLE}.uuid_ts ;;
-  }
-
-  measure: count {
-    type: count
-    drill_fields: [id, context_library_name]
+    hidden: yes
   }
 }

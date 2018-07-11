@@ -344,18 +344,18 @@ view: combined_campaign_performance_reports {
     drill_fields: [start_date, campaigns.name, total_cost]
   }
 
-  measure: average_cost_per_conversion {
+  measure: online_cost_per_conversion {
     type: number
     sql: ${total_cost}*1.0 / NULLIF(${total_conversions},0) ;;
     value_format_name: usd
     drill_fields: [start_date, campaigns.name, total_cost]
   }
 
-  measure: average_conversion_rate {
+  measure: online_conversion_rate {
     type: number
     sql: ${total_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
     value_format_name: percent_2
-    drill_fields: [start_date,average_conversion_rate]
+    drill_fields: [start_date, online_conversion_rate]
   }
 
   dimension: impressions {
@@ -369,5 +369,37 @@ view: combined_campaign_performance_reports {
     description: "Count of how often your ad has appeared on a search results page or website on the Google Network."
     sql: ${impressions} ;;
     drill_fields: [start_date, total_impressions, total_clicks,total_conversions, total_cost]
+  }
+
+  measure: CTR {
+    type: number
+    value_format_name: percent_2
+    sql: ${total_clicks} / NULLIF(${total_impressions},0) ;;
+  }
+
+  measure: CPC {
+    type: number
+    value_format_name: usd
+    sql: ${total_cost} / NULLIF(${total_clicks},0) ;;
+  }
+
+  measure: call_in_rate {
+    type: number
+    value_format_name: percent_2
+    sql: ${phone_call.count} / NULLIF(${total_clicks},0) ;;
+  }
+
+  measure: offline_cost_per_conversion {
+    type: number
+    sql: ${total_cost}*1.0 / NULLIF(${vethub_tracks.net_bookings},0) ;;
+    value_format_name: usd
+    drill_fields: [start_date, campaigns.name, total_cost]
+  }
+
+  measure: blended_cost_per_conversion {
+    type: number
+    sql: ${total_cost}*1.0 / NULLIF((${vethub_tracks.net_bookings} + ${total_conversions}),0) ;;
+    value_format_name: usd
+    drill_fields: [start_date, campaigns.name, total_cost]
   }
 }

@@ -40,4 +40,8 @@ explore: combined_campaign_performance_reports {
     relationship: one_to_many
     sql_on: ${combined_campaigns.name} = ${phone_call.utm_campaign};;
   }
+  join: vethub_tracks {
+    relationship: many_to_many
+    sql_on: ${phone_call.user_id} = ${vethub_tracks.user_id} ;;
+  }
 }
