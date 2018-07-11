@@ -54,7 +54,7 @@ view: combined_campaign_performance_reports {
 
   dimension: campaign_id {
     type: string
-    # hidden: yes
+    hidden: yes
     sql: ${TABLE}.campaign_id ;;
   }
 
@@ -62,6 +62,7 @@ view: combined_campaign_performance_reports {
     type: count_distinct
     sql: ${campaign_id} ;;
     drill_fields: [campaigns.name, total_cost]
+    hidden: yes
   }
 
   dimension: uuid {
@@ -152,7 +153,6 @@ view: combined_campaign_performance_reports {
   dimension: impression_reach {
     type: string
     description: "Number of unique cookies that were exposed to your ad over a given time period, or the special value < 100 if the number of cookies is less than 100."
-    hidden: yes
     #only value in table is '--'
     sql: ${TABLE}.impression_reach ;;
   }
@@ -167,6 +167,7 @@ view: combined_campaign_performance_reports {
     type: sum
     sql: ${invalid_clicks} ;;
     description: "Number of clicks Google considers illegitimate and doesn't charge you for."
+    hidden: yes
   }
 
   dimension: is_budget_explicitly_shared {
@@ -218,6 +219,7 @@ view: combined_campaign_performance_reports {
     type: sum
     sql: ${all_conversions} ;;
     description: "Best estimate of the total number of conversions that AdWords drives. Includes website, cross-device, and phone call conversions. Note: this is a best estimate performed by Google."
+    hidden: yes
   }
 
   dimension: value_per_all_conversion {
@@ -246,6 +248,7 @@ view: combined_campaign_performance_reports {
     type: average
     value_format_name: usd
     sql: ${average_cost} ;;
+    hidden: yes
   }
 
   dimension: average_position {
@@ -300,7 +303,7 @@ view: combined_campaign_performance_reports {
     type: sum
     sql: ${clicks} ;;
     description: "The number of clicks."
-    drill_fields: [start_date, total_impressions,total_clicks,total_conversions, total_cost]
+    drill_fields: [start_date, total_impressions,total_clicks,online_conversions, total_cost]
   }
 
   dimension: conversion_value {
@@ -322,11 +325,11 @@ view: combined_campaign_performance_reports {
     hidden: yes
   }
 
-  measure: total_conversions {
+  measure: online_conversions {
     type: sum
     description: "The number of conversions for all conversion actions that you have opted into optimization."
     sql: ${conversions} ;;
-    drill_fields: [start_date, total_conversions, total_cost]
+    drill_fields: [start_date, online_conversions, total_cost]
   }
 
   dimension: cost {
@@ -346,14 +349,14 @@ view: combined_campaign_performance_reports {
 
   measure: online_cost_per_conversion {
     type: number
-    sql: ${total_cost}*1.0 / NULLIF(${total_conversions},0) ;;
+    sql: ${total_cost}*1.0 / NULLIF(${online_conversions},0) ;;
     value_format_name: usd
     drill_fields: [start_date, campaigns.name, total_cost]
   }
 
   measure: online_conversion_rate {
     type: number
-    sql: ${total_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
+    sql: ${online_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
     value_format_name: percent_2
     drill_fields: [start_date, online_conversion_rate]
   }
@@ -368,16 +371,16 @@ view: combined_campaign_performance_reports {
     type: sum
     description: "Count of how often your ad has appeared on a search results page or website on the Google Network."
     sql: ${impressions} ;;
-    drill_fields: [start_date, total_impressions, total_clicks,total_conversions, total_cost]
+    drill_fields: [start_date, total_impressions, total_clicks,online_conversions, total_cost]
   }
 
-  measure: CTR {
+  measure: click_through_rate {
     type: number
     value_format_name: percent_2
     sql: ${total_clicks} / NULLIF(${total_impressions},0) ;;
   }
 
-  measure: CPC {
+  measure: cost_per_click {
     type: number
     value_format_name: usd
     sql: ${total_cost} / NULLIF(${total_clicks},0) ;;
@@ -391,15 +394,20 @@ view: combined_campaign_performance_reports {
 
   measure: offline_cost_per_conversion {
     type: number
-    sql: ${total_cost}*1.0 / NULLIF(${vethub_tracks.net_bookings},0) ;;
+    sql: ${total_cost}*1.0 / NULLIF(${vethub_tracks.net_offline_bookings},0) ;;
     value_format_name: usd
     drill_fields: [start_date, campaigns.name, total_cost]
   }
 
   measure: blended_cost_per_conversion {
     type: number
-    sql: ${total_cost}*1.0 / NULLIF((${vethub_tracks.net_bookings} + ${total_conversions}),0) ;;
+    sql: ${total_cost}*1.0 / NULLIF((${vethub_tracks.net_offline_bookings} + ${online_conversions}),0) ;;
     value_format_name: usd
     drill_fields: [start_date, campaigns.name, total_cost]
+  }
+  measure: total_conversions {
+    type: number
+    description: "Combined online and offline conversions."
+    sql: NULLIF(${online_conversions} + ${vethub_tracks.net_offline_bookings},0) ;;
   }
 }

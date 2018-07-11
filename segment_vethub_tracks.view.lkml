@@ -1,5 +1,6 @@
 view: vethub_tracks {
   sql_table_name: vethub.tracks ;;
+  label: "Offline Bookings"
 
   measure: offline_bookings {
     type: count_distinct
@@ -19,8 +20,9 @@ view: vethub_tracks {
     }
   }
 
-  measure: net_bookings {
+  measure: net_offline_bookings {
     type: number
+    description: "Offline bookings minus cancellations."
     sql: ${offline_bookings} - ${cancellations} ;;
   }
 

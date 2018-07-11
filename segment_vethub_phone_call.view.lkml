@@ -1,40 +1,36 @@
 view: phone_call {
   sql_table_name: vethub.phone_call ;;
+  label: "Phone Metrics"
 
   dimension: id {
     primary_key: yes
     type: string
     sql: ${TABLE}.id ;;
+    hidden: yes
   }
 
   dimension: anonymous_id {
     type: string
     sql: ${TABLE}.anonymous_id ;;
-  }
-
-  dimension: context_library_name {
-    type: string
-    sql: ${TABLE}.context_library_name ;;
-  }
-
-  dimension: context_library_version {
-    type: string
-    sql: ${TABLE}.context_library_version ;;
+    hidden: yes
   }
 
   dimension: event {
     type: string
     sql: ${TABLE}.event ;;
+    hidden: yes
   }
 
   dimension: event_text {
     type: string
     sql: ${TABLE}.event_text ;;
+    hidden: yes
   }
 
   dimension: first_call {
     type: string
     sql: ${TABLE}.first_call ;;
+    hidden: yes
   }
 
   dimension: number_called {
@@ -54,6 +50,7 @@ view: phone_call {
       year
     ]
     sql: ${TABLE}.original_timestamp ;;
+    hidden: yes
   }
 
   dimension_group: received {
@@ -68,6 +65,7 @@ view: phone_call {
       year
     ]
     sql: ${TABLE}.received_at ;;
+    hidden: yes
   }
 
   dimension: referrer {
@@ -87,6 +85,7 @@ view: phone_call {
       year
     ]
     sql: ${TABLE}.sent_at ;;
+    hidden: yes
   }
 
   dimension_group: timestamp {
@@ -106,11 +105,13 @@ view: phone_call {
   dimension: user_id {
     type: string
     sql: ${TABLE}.user_id ;;
+    hidden: yes
   }
 
   dimension: user_phone {
     type: string
     sql: ${TABLE}.user_phone ;;
+    hidden: yes
   }
 
   dimension: utm_campaign {
@@ -137,6 +138,7 @@ view: phone_call {
     type: number
     value_format_name: id
     sql: ${TABLE}.uuid ;;
+    hidden: yes
   }
 
   dimension_group: uuid_ts {
@@ -151,10 +153,11 @@ view: phone_call {
       year
     ]
     sql: ${TABLE}.uuid_ts ;;
+    hidden: yes
   }
 
   measure: count {
     type: count
-    drill_fields: [id, context_library_name]
+    drill_fields: [id]
   }
 }

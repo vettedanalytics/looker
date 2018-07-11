@@ -11,20 +11,20 @@ datagroup: adwords_datagroup {
   max_cache_age: "1 hour"
 }
 
-explore: combined_ad_performance_reports {
-  join: combined_ads {
-   relationship: many_to_one
-    sql_on: ${combined_ad_performance_reports.ad_id} = ${combined_ads.id} ;;
-  }
-  join: combined_ad_groups {
-    relationship: many_to_one
-    sql_on: ${combined_ads.ad_group_id} = ${combined_ad_groups.id} ;;
-  }
-  join: combined_campaigns {
-    relationship: many_to_one
-    sql_on: ${combined_ad_groups.campaign_id} = ${combined_campaigns.id} ;;
-  }
-}
+# explore: combined_ad_performance_reports {
+#   join: combined_ads {
+#    relationship: many_to_one
+#     sql_on: ${combined_ad_performance_reports.ad_id} = ${combined_ads.id} ;;
+#   }
+#   join: combined_ad_groups {
+#     relationship: many_to_one
+#     sql_on: ${combined_ads.ad_group_id} = ${combined_ad_groups.id} ;;
+#   }
+#   join: combined_campaigns {
+#     relationship: many_to_one
+#     sql_on: ${combined_ad_groups.campaign_id} = ${combined_campaigns.id} ;;
+#   }
+# }
 
 explore: combined_campaign_performance_reports {
   label: "Adwords Campaigns"
