@@ -35,4 +35,8 @@ explore: combined_campaign_performance_reports {
     relationship: one_to_many
     sql_on: ${combined_ad_groups.campaign_id} = ${combined_campaigns.id} ;;
   }
+  join: phone_call {
+    relationship: one_to_many
+    sql_on: ${combined_campaigns.name} = ${phone_call.utm_campaign}};;
+  }
 }
