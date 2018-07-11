@@ -27,6 +27,7 @@ explore: combined_ad_performance_reports {
 }
 
 explore: combined_campaign_performance_reports {
+  label: "Adwords Campaigns"
   join: combined_campaigns {
     relationship: many_to_one
     sql_on: ${combined_campaign_performance_reports.campaign_id} = ${combined_campaigns.id} ;;
@@ -37,6 +38,6 @@ explore: combined_campaign_performance_reports {
   }
   join: phone_call {
     relationship: one_to_many
-    sql_on: ${combined_campaigns.name} = ${phone_call.utm_campaign}};;
+    sql_on: ${combined_campaigns.name} = ${phone_call.utm_campaign};;
   }
 }

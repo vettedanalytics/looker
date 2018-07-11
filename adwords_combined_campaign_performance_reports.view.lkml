@@ -37,7 +37,9 @@ view: combined_campaign_performance_reports {
   dimension: account_name {
     type:  string
     sql:  case when ${adwords_customer_id} = 5292223433 then 'VetPronto' when ${adwords_customer_id} = 2054154801 then 'Vetted' else null end;;
+    drill_fields: [combined_campaigns.name]
   }
+
   dimension: base_campaign_id {
     type: string
     sql: ${TABLE}.base_campaign_id ;;

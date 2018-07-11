@@ -37,11 +37,6 @@ view: combined_campaigns {
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
-    link: {
-      label: "Campaign Lookup Dashboard"
-      icon_url: "https://looker.com/favicon.ico"
-      url: "https://boomerang.looker.com/dashboards/6?Campaign%20Name={{ value }}"
-    }
   }
 
   dimension_group: received {
