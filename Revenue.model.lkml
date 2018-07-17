@@ -4,7 +4,7 @@ connection: "vetted_marketing"
 include: "*.view"
 
 # include all the dashboards
-include: "*.dashboard"
+# include: "*.dashboard"
 
 datagroup: ryan_test_default_datagroup {
   sql_trigger: select count(*) from stripe_vetpronto.charges;;
@@ -36,6 +36,11 @@ explore: appointments {
     sql_on: ${combined_charges.customer_id} = ${clients.stripe_token};;
     relationship: many_to_one
     view_label: "Clients"
+  }
+  join: users {
+    sql_on: ${clients.user_id} = ${users.id} ;;
+    relationship: one_to_one
+    view_label: "Users"
   }
   join: chargebee_clients {
     from: clients

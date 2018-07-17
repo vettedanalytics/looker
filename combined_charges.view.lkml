@@ -29,6 +29,7 @@ view: combined_charges {
       value: "succeeded"
     }
     sql: ${amount};;
+    drill_fields: [clients.full_name]
   }
 
   measure: revenue {
@@ -90,7 +91,7 @@ view: combined_charges {
       customer_id,
       id,
       created_time,
-      company
+      company,
     ]
   }
 }

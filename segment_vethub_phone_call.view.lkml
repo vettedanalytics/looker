@@ -9,6 +9,12 @@ view: phone_call {
     hidden: yes
   }
 
+  dimension: gclid {
+    type: string
+    sql: ${TABLE}.gclid;;
+    hidden: yes
+  }
+
   dimension: anonymous_id {
     type: string
     sql: ${TABLE}.anonymous_id ;;

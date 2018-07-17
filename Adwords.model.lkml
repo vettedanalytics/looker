@@ -4,7 +4,7 @@ connection: "vetted_marketing"
 include: "*.view.lkml"
 
 # include all dashboards in this project
-include: "*.dashboard.lookml"
+# include: "*.dashboard.lookml"
 
 datagroup: adwords_datagroup {
   sql_trigger: select count(*) from adwords.campaign_performance_reports;;
@@ -36,9 +36,13 @@ explore: combined_campaign_performance_reports {
     relationship: one_to_many
     sql_on: ${combined_ad_groups.campaign_id} = ${combined_campaigns.id} ;;
   }
-  join: phone_call {
+  join:   adwords_combined_click_performance_reports {
     relationship: one_to_many
-    sql_on: ${combined_campaigns.name} = ${phone_call.utm_campaign};;
+    sql_on: ${adwords_combined_click_performance_reports.ad_group_id} = ${combined_ad_groups.id} ;;
+  }
+  join: phone_call {
+    relationship: many_to_many
+    sql_on: ${phone_call.gclid} = ${adwords_combined_click_performance_reports.gcl_id};;
   }
   join: vethub_tracks {
     relationship: many_to_many

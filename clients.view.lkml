@@ -39,6 +39,7 @@ view: clients {
       year
     ]
     sql: ${TABLE}.created_at ;;
+    drill_fields: [full_name, first_name, user_id, combined_charges.customer_id]
   }
 
   dimension: do_not_email {
@@ -137,6 +138,11 @@ view: clients {
 
   measure: count {
     type: count
-    drill_fields: [id, secondary_last_name, secondary_first_name, last_name, first_name]
+    drill_fields: [id, secondary_last_name, secondary_first_name, last_name, first_name, full_name]
+  }
+
+  dimension: full_name {
+    type: string
+    sql: (${first_name} || ' ' || ${last_name}) ;;
   }
 }

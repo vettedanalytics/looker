@@ -4,7 +4,7 @@ connection: "vetted_marketing"
 include: "*.view.lkml"
 
 # include all dashboards in this project
-include: "*.dashboard.lookml"
+# include: "*.dashboard.lookml"
 
 datagroup: segment_datagroup {
   sql_trigger: select count(*) from javascript.tracks;;
@@ -15,4 +15,9 @@ explore: segment_combined_tracks {
   label: "Events & Tracks"
   view_label: "Tracks"
   persist_with: segment_datagroup
+  join: vethub_tracks {
+    sql_on: ${segment_combined_tracks.user_id} = ${vethub_tracks.user_id} ;;
+    relationship: one_to_one
+    view_label: "VetHub Tracks"
+  }
   }
