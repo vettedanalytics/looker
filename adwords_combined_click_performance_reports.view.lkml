@@ -1,5 +1,6 @@
 view: adwords_combined_click_performance_reports {
   derived_table: {
+    datagroup_trigger: adwords_datagroup
     sql: select ad_format, ad_group_id, ad_network_type_1, ad_network_type_2, adwords_customer_id, aoi_most_specific_target_id, campaign_id, click_type, creative_id, criteria_parameters, date_start, date_stop, device, gcl_id, id, page, received_at, slot, user_list_id, uuid, uuid_ts, 'vetted' as company
       from adwords.click_performance_reports
       union all
@@ -7,6 +8,7 @@ view: adwords_combined_click_performance_reports {
       from vetprontoadwords.click_performance_reports
       limit 10
        ;;
+    distribution_style: all
   }
 
   measure: count {

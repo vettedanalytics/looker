@@ -9,12 +9,6 @@ view: phone_call {
     hidden: yes
   }
 
-  dimension: gclid {
-    type: string
-    sql: ${TABLE}.gclid;;
-    hidden: yes
-  }
-
   dimension: anonymous_id {
     type: string
     sql: ${TABLE}.anonymous_id ;;
@@ -138,6 +132,11 @@ view: phone_call {
   dimension: utm_source {
     type: string
     sql: ${TABLE}.utm_source ;;
+  }
+
+  dimension: gclid {
+    type: string
+    sql: ${TABLE}.gclid ;;
   }
 
   dimension: uuid {

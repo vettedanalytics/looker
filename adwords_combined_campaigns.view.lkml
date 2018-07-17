@@ -1,11 +1,13 @@
 view: combined_campaigns {
   derived_table: {
+    datagroup_trigger: adwords_datagroup
     sql: select id, adwords_customer_id, end_date, name, received_at, serving_status, start_date, status, uuid, uuid_ts, 'vetted' as company
       from adwords.campaigns
       union all
       select id, adwords_customer_id, end_date, name, received_at, serving_status, start_date, status, uuid, uuid_ts, 'vetpronto' as company
       from vetprontoadwords.campaigns
        ;;
+    distribution_style: all
   }
 
   dimension: id {
