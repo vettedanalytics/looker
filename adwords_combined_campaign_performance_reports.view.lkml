@@ -83,14 +83,12 @@ view: combined_campaign_performance_reports {
     type: time
     timeframes: [
       raw,
-      time,
       date,
       week,
       month,
       quarter,
       year,
-      day_of_week,
-      time_of_day
+      day_of_week
     ]
     sql: ${TABLE}.date_start ;;
     convert_tz: no
@@ -384,12 +382,6 @@ view: combined_campaign_performance_reports {
     type: number
     value_format_name: usd
     sql: ${total_cost} / NULLIF(${total_clicks},0) ;;
-  }
-
-  measure: call_in_rate {
-    type: number
-    value_format_name: percent_2
-    sql: ${phone_call.count} / NULLIF(${total_clicks},0) ;;
   }
 
   measure: offline_cost_per_conversion {

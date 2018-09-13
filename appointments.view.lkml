@@ -7,16 +7,8 @@ view: appointments {
     sql: ${TABLE}.id ;;
   }
 
-  measure: confirmed_appointments {
-    type: count_distinct
-    filters: {
-      field: confirmed
-      value: "yes"
-    }
-    sql: ${id} ;;
-  }
-
   dimension: address {
+    hidden: yes
     type: string
     sql: ${TABLE}.address ;;
   }
@@ -37,6 +29,7 @@ view: appointments {
   }
 
   dimension: client_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.client_id ;;
   }
@@ -80,6 +73,7 @@ view: appointments {
   }
 
   dimension: phone_number {
+    hidden: yes
     type: string
     sql: ${TABLE}.phone_number ;;
   }
@@ -90,16 +84,19 @@ view: appointments {
   }
 
   dimension: promo_code_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.promo_code_id ;;
   }
 
   dimension: quick_booked {
+    hidden: yes
     type: yesno
     sql: ${TABLE}.quick_booked ;;
   }
 
   dimension: secondary_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.secondary_id ;;
   }
@@ -120,6 +117,7 @@ view: appointments {
   }
 
   dimension: upcoming_reminder_sent {
+    hidden: yes
     type: yesno
     sql: ${TABLE}.upcoming_reminder_sent ;;
   }
@@ -130,6 +128,7 @@ view: appointments {
   }
 
   dimension: working {
+    hidden: yes
     type: yesno
     sql: ${TABLE}.working ;;
   }
@@ -139,8 +138,65 @@ view: appointments {
     sql: ${TABLE}.zip_code ;;
   }
 
+  dimension: is_first_appointment {
+    type:  yesno
+    sql: ${client_faq.first_appointment_time} = ${start_time};;
+  }
+
   measure: count {
     type: count
     drill_fields: [id]
+  }
+
+  measure: confirmed_appointments {
+    type: count_distinct
+    filters: {
+      field: confirmed
+      value: "yes"
+    }
+    sql: ${id} ;;
+  }
+
+  measure: admin_appointments {
+    type: count_distinct
+    filters: {
+      field: admin_booked
+      value: "yes"
+    }
+    sql: ${id} ;;
+  }
+
+  measure: first_appointment {
+    hidden: yes
+    type:  min
+    sql: ${start_raw} ;;
+
+  }
+
+  measure: last_appointment {
+    hidden:  yes
+    type:  max
+    sql: ${start_raw} ;;
+  }
+
+  measure: first_time_appointments {
+    type:  count
+    filters: {
+      field: is_first_appointment
+      value: "yes"
+    }
+  }
+
+  measure: repeat_appointments {
+    type:  count
+    filters: {
+      field: is_first_appointment
+      value: "no"
+    }
+  }
+
+  measure: running_total_appointments {
+    type:  running_total
+    sql: ${count} ;;
   }
 }

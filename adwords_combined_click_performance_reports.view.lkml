@@ -6,7 +6,6 @@ view: adwords_combined_click_performance_reports {
       union all
       select ad_format, ad_group_id, ad_network_type_1, ad_network_type_2, adwords_customer_id, aoi_most_specific_target_id, campaign_id, click_type, creative_id, criteria_parameters, date_start, date_stop, device, gcl_id, id, page, received_at, slot, user_list_id, uuid, uuid_ts, 'vetpronto' as company
       from vetprontoadwords.click_performance_reports
-      limit 10
        ;;
     distribution_style: all
   }
@@ -69,11 +68,13 @@ view: adwords_combined_click_performance_reports {
   dimension_group: date_start {
     type: time
     sql: ${TABLE}.date_start ;;
+    convert_tz: no
   }
 
   dimension_group: date_stop {
     type: time
     sql: ${TABLE}.date_stop ;;
+    convert_tz: no
   }
 
   dimension: device {

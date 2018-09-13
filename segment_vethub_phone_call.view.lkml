@@ -161,8 +161,8 @@ view: phone_call {
     hidden: yes
   }
 
-  measure: count {
+  measure: phone_calls {
     type: count
-    drill_fields: [id]
+    drill_fields: [user_id]
   }
 }

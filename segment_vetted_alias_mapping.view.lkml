@@ -1,4 +1,4 @@
-view: segment_aliases_mapping {
+view: segment_vetted_alias_mapping {
   derived_table: {
     sql_trigger_value: select current_date ;;
     sortkeys: ["looker_visitor_id", "alias"]
@@ -8,14 +8,14 @@ view: segment_aliases_mapping {
         select anonymous_id
         , user_id
         , received_at as received_at
-        from ${segment_combined_tracks.SQL_TABLE_NAME}
+        from javascript.tracks
 
         union
 
         select user_id
           , null
           , received_at
-        from ${segment_combined_tracks.SQL_TABLE_NAME}
+        from javascript.tracks
       )
 
       select

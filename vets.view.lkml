@@ -13,23 +13,27 @@ view: vets {
   }
 
   dimension: appointment_cut_off {
-    type: number
+   type: number
     sql: ${TABLE}.appointment_cut_off ;;
+    hidden: yes
   }
 
   dimension: appointment_distance {
     type: number
     sql: ${TABLE}.appointment_distance ;;
+    hidden: yes
   }
 
   dimension: appointment_duration {
     type: number
     sql: ${TABLE}.appointment_duration ;;
+    hidden: yes
   }
 
   dimension: bio {
     type: string
     sql: ${TABLE}.bio ;;
+    hidden: yes
   }
 
   dimension: brand {
@@ -54,11 +58,13 @@ view: vets {
   dimension: dea_license_number {
     type: string
     sql: ${TABLE}.dea_license_number ;;
+    hidden: yes
   }
 
   dimension: independent {
     type: yesno
     sql: ${TABLE}.independent ;;
+    hidden: yes
   }
 
   dimension: is_vet {
@@ -69,6 +75,7 @@ view: vets {
   dimension: license_number {
     type: string
     sql: ${TABLE}.license_number ;;
+    hidden: yes
   }
 
   dimension: name {
@@ -79,21 +86,25 @@ view: vets {
   dimension: phone_number {
     type: string
     sql: ${TABLE}.phone_number ;;
+    hidden: yes
   }
 
   dimension: photo_url {
     type: string
     sql: ${TABLE}.photo_url ;;
+    hidden: yes
   }
 
   dimension: rx_address {
     type: string
     sql: ${TABLE}.rx_address ;;
+    hidden: yes
   }
 
   dimension: self_scheduled {
     type: yesno
     sql: ${TABLE}.self_scheduled ;;
+    hidden: yes
   }
 
   dimension: service_area_id {
@@ -119,11 +130,13 @@ view: vets {
     type: number
     # hidden: yes
     sql: ${TABLE}.user_id ;;
+    hidden: yes
   }
 
   dimension: yelp_url {
     type: string
     sql: ${TABLE}.yelp_url ;;
+    hidden: yes
   }
 
   measure: count {

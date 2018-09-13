@@ -1,6 +1,6 @@
 ## Intermediate Table
 
-view: segment_mapped_tracks {
+view: segment_vetted_mapped_tracks {
   derived_table: {
     sortkeys: ["event_id"]
     distribution: "looker_visitor_id"
@@ -14,8 +14,8 @@ view: segment_mapped_tracks {
           , t.received_at
           , t.event as event
           , t.uuid
-          from ${segment_combined_tracks.SQL_TABLE_NAME} as t
-          inner join ${aliases_mapping.SQL_TABLE_NAME} as a2v
+          from javascript.tracks as t
+          inner join ${segment_vetted_alias_mapping.SQL_TABLE_NAME} as a2v
           on a2v.alias = coalesce(t.user_id, t.anonymous_id)
         )
        ;;

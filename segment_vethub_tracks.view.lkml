@@ -3,27 +3,38 @@ view: vethub_tracks {
   label: "Offline Bookings"
 
   measure: offline_bookings {
-    type: count_distinct
-    sql:  ${TABLE}.id;;
+    type: count
     filters: {
       field: event
       value: "booking_booking_confirmed"
     }
+    drill_fields: [user_id]
+  }
+
+  measure: answered_calls {
+    type: count
+    filters: {
+      field: event
+      value: "phone_call_answered"
+    }
+    drill_fields: [user_id]
   }
 
   measure: cancellations {
-    type: count_distinct
-    sql:  ${TABLE}.id;;
+    type: count
     filters: {
       field: event
       value: "cancellation_visit"
     }
+    drill_fields: [user_id]
+    hidden: yes
   }
 
   measure: net_offline_bookings {
     type: number
     description: "Offline bookings minus cancellations."
     sql: ${offline_bookings} - ${cancellations} ;;
+    hidden: yes
   }
 
   dimension: id {
