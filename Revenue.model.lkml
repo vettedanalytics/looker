@@ -83,4 +83,8 @@ explore: appointments {
 
 explore: combined_charges {
   label: "Stripe"
+  join: combined_customers {
+    sql_on: ${combined_charges.customer_id} = ${combined_customers.id} ;;
+    relationship: many_to_one
+  }
 }

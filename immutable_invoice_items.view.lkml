@@ -69,6 +69,7 @@ view: immutable_invoice_items {
       date,
       week,
       month,
+      month_num,
       quarter,
       year
     ]
@@ -130,5 +131,11 @@ view: immutable_invoice_items {
     type: number
     value_format_name: "usd"
     sql: ${total_invoice_amount} / ${appointments.count} ;;
+  }
+
+  measure: running_total_invoice_amount {
+    type:  running_total
+    value_format_name: usd
+    sql: ${total_invoice_amount} ;;
   }
 }
