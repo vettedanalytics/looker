@@ -79,6 +79,10 @@ explore: appointments {
     sql_on: ${appointments.service_area_id} = ${service_areas.id} ;;
     relationship: one_to_one
   }
+  join: first_vet_name {
+    sql_on: ${client_faq.id} = ${first_vet_name.id};;
+    relationship: one_to_one
+  }
 }
 
 explore: combined_charges {

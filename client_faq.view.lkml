@@ -47,4 +47,7 @@ view: client_faq {
         day_of_week
       ]
     }
+    dimension: first_vet_seen {
+      sql: ${first_vet_name.name} ;;
+    }
  }
