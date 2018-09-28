@@ -23,6 +23,7 @@ view: client_faq {
       type: number
     }
     dimension: count {
+      hidden: yes
       type: number
     }
     dimension_group: first_appointment {
@@ -48,6 +49,6 @@ view: client_faq {
       ]
     }
     dimension: first_vet_seen {
-      sql: ${first_vet_name.name} ;;
+      sql: ${first_vet_seen.name} ;;
     }
  }

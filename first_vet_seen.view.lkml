@@ -1,19 +1,20 @@
 # If necessary, uncomment the line below to include explore_source.
 # include: "Revenue.model.lkml"
 
-view: first_vet_name {
+view: first_vet_seen {
   derived_table: {
     explore_source: appointments {
-      column: id { field: client_faq.id }
-      column: first_appointment_date { field: client_faq.first_appointment_date }
+      column: id { field: clients.id }
       column: name { field: vets.name }
+      filters: {
+        field: appointments.is_first_appointment
+        value: "Yes"
+      }
     }
   }
   dimension: id {
+    hidden: yes
     type: number
-  }
-  dimension: first_appointment_date {
-    type: date
   }
   dimension: name {}
 }

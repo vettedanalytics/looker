@@ -8,6 +8,7 @@ view: service_areas {
   }
 
   dimension_group: _sdc_batched {
+    hidden:  yes
     type: time
     timeframes: [
       raw,
@@ -22,6 +23,7 @@ view: service_areas {
   }
 
   dimension_group: _sdc_received {
+    hidden:  yes
     type: time
     timeframes: [
       raw,
@@ -36,11 +38,13 @@ view: service_areas {
   }
 
   dimension: _sdc_sequence {
+    hidden:  yes
     type: number
     sql: ${TABLE}._sdc_sequence ;;
   }
 
   dimension: _sdc_table_version {
+    hidden:  yes
     type: number
     sql: ${TABLE}._sdc_table_version ;;
   }
@@ -71,6 +75,7 @@ view: service_areas {
   }
 
   dimension_group: created {
+    hidden:  yes
     type: time
     timeframes: [
       raw,
@@ -105,6 +110,7 @@ view: service_areas {
   }
 
   dimension: self_scheduled {
+    hidden:  yes
     type: yesno
     sql: ${TABLE}.self_scheduled ;;
   }
@@ -115,6 +121,7 @@ view: service_areas {
   }
 
   dimension_group: updated {
+    hidden:  yes
     type: time
     timeframes: [
       raw,
@@ -134,6 +141,7 @@ view: service_areas {
   }
 
   measure: count {
+    hidden:  yes
     type: count
     drill_fields: [id, name]
   }

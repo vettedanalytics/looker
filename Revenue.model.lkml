@@ -56,9 +56,11 @@ explore: appointments {
   label: "Revenue"
   join: invoices {
     sql_on: ${appointments.id} = ${invoices.appointment_id} ;;
+    fields: []
     relationship: one_to_many
   }
   join: immutable_invoice_items {
+    view_label: "Invoice Items"
     sql_on: ${invoices.id}  = ${immutable_invoice_items.invoice_id};;
     relationship: one_to_many
   }
@@ -71,7 +73,7 @@ explore: appointments {
     relationship: many_to_one
   }
   join: client_faq {
-    view_label: "Client Life Time Values"
+    view_label: "Client FAQ"
     sql_on: ${clients.id} = ${client_faq.id} ;;
     relationship: one_to_one
   }
@@ -79,8 +81,9 @@ explore: appointments {
     sql_on: ${appointments.service_area_id} = ${service_areas.id} ;;
     relationship: one_to_one
   }
-  join: first_vet_name {
-    sql_on: ${client_faq.id} = ${first_vet_name.id};;
+  join: first_vet_seen {
+    sql_on: ${client_faq.id} = ${first_vet_seen.id} ;;
+    fields: []
     relationship: one_to_one
   }
 }

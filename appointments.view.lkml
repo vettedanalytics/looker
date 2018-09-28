@@ -19,11 +19,13 @@ view: appointments {
   }
 
   dimension: category {
+    hidden: yes
     type: string
     sql: ${TABLE}.category ;;
   }
 
   dimension: city {
+    hidden: yes
     type: string
     sql: ${TABLE}.city ;;
   }
@@ -54,11 +56,13 @@ view: appointments {
   }
 
   dimension: discount_code {
+    hidden: yes
     type: string
     sql: ${TABLE}.discount_code ;;
   }
 
   dimension_group: end {
+    hidden: yes
     type: time
     timeframes: [
       raw,
@@ -79,6 +83,7 @@ view: appointments {
   }
 
   dimension: price {
+    hidden: yes
     type: string
     sql: ${TABLE}.price ;;
   }
@@ -102,6 +107,7 @@ view: appointments {
   }
 
   dimension: service_area_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.service_area_id ;;
   }
@@ -112,6 +118,7 @@ view: appointments {
   }
 
   dimension: state {
+    hidden: yes
     type: string
     sql: ${TABLE}.state ;;
   }
@@ -123,6 +130,7 @@ view: appointments {
   }
 
   dimension: vet_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.vet_id ;;
   }
@@ -144,6 +152,7 @@ view: appointments {
   }
 
   measure: count {
+    label: "Count of Appointments"
     type: count
     drill_fields: [id]
   }
