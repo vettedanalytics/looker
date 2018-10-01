@@ -23,7 +23,7 @@ explore: utilization_shifts {
   join: vets {
     sql_on: ${utilization_shifts.vet_id} = ${vets.id} ;;
     relationship: many_to_one
-    fields: [vets.name]
+    fields: [name, is_vet]
   }
   join: service_areas {
     sql_on: ${utilization_shifts.service_area_id} = ${service_areas.id} ;;

@@ -18,19 +18,21 @@ where (idle_time_minutes > 30 or idle_time_minutes is null)
   }
 
   dimension: session_id {
+    hidden: yes
     primary_key: yes
     sql: ${TABLE}.session_id ;;
   }
 
   dimension: looker_visitor_id {
+    hidden: yes
     type: string
     sql: ${TABLE}.looker_visitor_id ;;
   }
 
   dimension: anonymous_id {
+    hidden: yes
     type: string
     sql: ${TABLE}.anonymous_id ;;
-    hidden: yes
   }
 
   dimension_group: start {
