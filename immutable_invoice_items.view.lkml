@@ -114,6 +114,11 @@ view: immutable_invoice_items {
     sql: ${TABLE}.user_id ;;
   }
 
+  dimension: is_discount {
+    type: yesno
+    sql: case when ${category} = 'Discount' then 'yes' else 'no' ;;
+  }
+
   measure: count {
     description: "Count of inovice line items"
     type: count
