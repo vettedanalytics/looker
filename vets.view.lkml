@@ -143,4 +143,10 @@ view: vets {
     type: count
     drill_fields: [id, name, users.id]
   }
+
+  measure: count_running_total {
+    type: running_total
+    sql: ${count} ;;
+    drill_fields: [id, name, users.id]
+  }
 }
