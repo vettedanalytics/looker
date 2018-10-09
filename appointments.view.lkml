@@ -154,7 +154,7 @@ view: appointments {
   measure: count {
     label: "Count of Appointments"
     type: count
-    drill_fields: [id]
+    drill_fields: [id, client_id]
   }
 
   measure: confirmed_appointments {
@@ -164,6 +164,7 @@ view: appointments {
       value: "yes"
     }
     sql: ${id} ;;
+    drill_fields: [id, client_id]
   }
 
   measure: admin_appointments {
@@ -207,5 +208,9 @@ view: appointments {
   measure: running_total_appointments {
     type:  running_total
     sql: ${count} ;;
+  }
+  measure: distinct_clients {
+    type: count_distinct
+    sql: ${client_id} ;;
   }
 }

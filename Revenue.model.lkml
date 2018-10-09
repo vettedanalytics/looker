@@ -90,8 +90,12 @@ explore: appointments {
 
 explore: combined_charges {
   label: "Stripe"
+  join: combined_cards {
+    sql_on: ${combined_charges.card_id} = ${combined_cards.id} ;;
+    relationship: many_to_one
+  }
   join: combined_customers {
-    sql_on: ${combined_charges.customer_id} = ${combined_customers.id} ;;
+    sql_on: ${combined_cards.customer_id} = ${combined_customers.id} ;;
     relationship: many_to_one
   }
 }

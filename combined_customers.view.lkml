@@ -1,10 +1,10 @@
 view: combined_customers {
   derived_table: {
     datagroup_trigger: ryan_test_default_datagroup
-    sql: select id, created, 'vetted' as company, description
+    sql: select id, created, email, 'vetted' as company, description
       from stripe_vetted.customers
       union all
-      select id, created, 'vetpronto' as company, description
+      select id, created, email, 'vetpronto' as company, description
       from stripe_vetpronto.customers
  ;;
     distribution_style: all
@@ -19,6 +19,11 @@ view: combined_customers {
     primary_key: yes
     type: string
     sql: ${TABLE}.id ;;
+  }
+
+  dimension: email {
+    type: string
+    sql: ${TABLE}.email ;;
   }
 
   dimension_group: created {
