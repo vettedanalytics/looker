@@ -51,7 +51,6 @@ view: immutable_invoice_items {
   }
 
   dimension: amount {
-    hidden: yes
     type: number
     sql: ${TABLE}.amount ;;
   }

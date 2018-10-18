@@ -35,6 +35,11 @@ view: combined_cards {
     sql: ${TABLE}.company ;;
   }
 
+  dimension: email {
+    type: string
+    sql: ${TABLE}.name like '%@%';;
+  }
+
   dimension: id {
     primary_key: yes
     type: string
