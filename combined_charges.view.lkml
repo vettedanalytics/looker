@@ -85,7 +85,7 @@ view: combined_charges {
   }
 
   dimension: email {
-    sql: CASE WHEN ${combined_customers.email} is not null THEN ${combined_customers.email} ELSE  ;;
+    sql: CASE WHEN ${combined_customers.email} is not null THEN ${combined_customers.email} ELSE NULL END  ;;
   }
 
   set: detail {
