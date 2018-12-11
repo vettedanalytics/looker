@@ -84,9 +84,9 @@ view: combined_charges {
     sql:  ${TABLE}.amount_refunded / 100 ;;
   }
 
-  dimension: email {
-    sql: CASE WHEN ${combined_customers.email} is not null THEN ${combined_customers.email} ELSE  ;;
-  }
+ dimension: email {
+  sql: CASE WHEN ${combined_customers.email} is not null THEN ${combined_customers.email} ELSE  ;;
+ }
 
   set: detail {
     fields: [
