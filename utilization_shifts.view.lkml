@@ -124,7 +124,6 @@ view: utilization_shifts {
   }
 
   dimension_group: start {
-    hidden: yes
     type: time
     timeframes: [
       raw,
