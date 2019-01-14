@@ -68,6 +68,10 @@ explore: appointments {
     sql_on: ${appointments.client_id} = ${clients.id} ;;
     relationship: many_to_one
   }
+  join: vw_users {
+    sql_on: ${clients.user_id} = ${vw_users.id} ;;
+    relationship: one_to_one
+  }
   join: appointment_patients {
     sql_on: ${appointments.id} = ${appointment_patients.appointment_id};;
     relationship: one_to_many
@@ -94,6 +98,20 @@ explore: appointments {
 
 explore: combined_charges {
   label: "Stripe"
+  join: vw_users {
+    sql_on: ${combined_charges.email} = ${vw_users.email} ;;
+    relationship: one_to_many
+  }
+  join: clients {
+    sql_on: ${vw_users.id} = ${clients.id} ;;
+    relationship: one_to_one
+    fields: []
+  }
+  join: appointments {
+    sql_on: ${clients.id} = ${appointments.client_id} ;;
+    relationship: one_to_many
+    fields: [appointments.count]
+  }
   join: combined_cards {
     sql_on: ${combined_charges.card_id} = ${combined_cards.id} ;;
     relationship: many_to_one
