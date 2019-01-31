@@ -109,7 +109,16 @@ explore: combined_charges {
   join: appointments {
     sql_on: ${clients.id} = ${appointments.client_id} ;;
     relationship: one_to_many
-    fields: [appointments.count]
+  }
+  join: client_faq {
+    view_label: "Client FAQ"
+    sql_on: ${clients.id} = ${client_faq.id} ;;
+    relationship: one_to_one
+  }
+  join: first_vet_seen {
+    sql_on: ${client_faq.id} = ${first_vet_seen.id} ;;
+    fields: []
+    relationship: one_to_one
   }
   join: combined_cards {
     sql_on: ${combined_charges.card_id} = ${combined_cards.id} ;;
