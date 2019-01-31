@@ -105,7 +105,6 @@ explore: combined_charges {
   join: clients {
     sql_on: ${vw_users.id} = ${clients.id} ;;
     relationship: one_to_one
-    fields: []
   }
   join: appointments {
     sql_on: ${clients.id} = ${appointments.client_id} ;;
