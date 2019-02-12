@@ -129,3 +129,7 @@ explore: combined_charges {
     relationship: many_to_one
   }
 }
+
+explore: rosnick_charges {
+  label: "Rosnick Stripe"
+}
