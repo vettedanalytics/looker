@@ -56,6 +56,7 @@ view: appointments {
   }
 
   dimension: discount_code {
+    hidden: yes
     type: string
     sql: ${TABLE}.discount_code ;;
   }
