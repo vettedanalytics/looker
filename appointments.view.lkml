@@ -50,7 +50,8 @@ view: appointments {
       week,
       month,
       quarter,
-      year
+      year,
+      day_of_week
     ]
     sql: ${TABLE}.created_at ;;
   }
@@ -114,6 +115,16 @@ view: appointments {
 
   dimension_group: start {
     type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      day_of_week
+    ]
     sql: ${TABLE}.start_time ;;
   }
 
