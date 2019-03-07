@@ -76,7 +76,6 @@ view: clients {
   }
 
   dimension: phone_number {
-    hidden:  yes
     type: string
     sql: ${TABLE}.phone_number ;;
   }
