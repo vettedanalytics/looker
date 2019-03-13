@@ -49,3 +49,7 @@ view: sql_runner_query {
     fields: [name, building, btrim]
   }
 }
+
+explore: service_area_zips{
+  label: "Service Area Zips"
+}
