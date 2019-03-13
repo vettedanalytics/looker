@@ -20,5 +20,9 @@ include: "*.view.lkml"                       # include all views in this project
 
 
 explore: search_no_service {
-  label: "Zips"
+  label: "Search No Service"
+}
+
+explore: service_area_zips {
+  label: "Service Areas"
 }
