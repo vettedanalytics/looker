@@ -5,6 +5,7 @@
           , name as name
           , building as building
           , active as active
+          FROM service_areas
         ;;
     }
 
