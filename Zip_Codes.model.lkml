@@ -18,7 +18,10 @@ include: "*.view.lkml"                       # include all views in this project
 #   }
 # }
 
-
 explore: search_no_service {
-  label: "Zips"
+  label: "Zip Search No Service"
+}
+
+explore: search_no_availability {
+  label: "Zip Search No Availability"
 }
