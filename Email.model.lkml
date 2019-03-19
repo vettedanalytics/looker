@@ -20,9 +20,12 @@ include: "*.view.lkml"                       # include all views in this project
 
 explore: vw_users {
   label: "Email Utilities"
+  view_label: "Email"
+  fields: [vw_users.email]
   join: clients {
     sql_on: ${vw_users.id} = ${clients.user_id} ;;
     relationship: many_to_one
+    fields: [clients.do_not_email, clients.id, clients.created_date]
   }
   join: appointments {
     sql_on: ${clients.id} = ${appointments.client_id} ;;
@@ -30,7 +33,9 @@ explore: vw_users {
     relationship: one_to_many
   }
   join: nps_survey_complete {
+    view_label: "NPS"
     sql_on: ${clients.id} = ${nps_survey_complete.user_id};;
     relationship: one_to_many
+    fields: [nps_survey_complete.timestamp_date, nps_survey_complete.score]
   }
 }
