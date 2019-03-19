@@ -46,7 +46,6 @@ view: clients {
   }
 
   dimension: do_not_email {
-    hidden:  yes
     type: yesno
     sql: ${TABLE}.do_not_email ;;
   }
