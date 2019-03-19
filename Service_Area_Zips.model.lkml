@@ -1,4 +1,4 @@
-connection: "vetted_marketing"
+connection: "vetpronto"
 
 include: "*.view.lkml"                       # include all views in this project
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
@@ -18,10 +18,7 @@ include: "*.view.lkml"                       # include all views in this project
 #   }
 # }
 
-explore: search_no_service {
-  label: "Zip Search No Service"
-}
 
-explore: search_no_availability {
-  label: "Zip Search No Availability"
+explore: service_area_zips {
+  label: "Service Area Zips"
 }
