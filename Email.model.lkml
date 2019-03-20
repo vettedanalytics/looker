@@ -18,13 +18,17 @@ include: "*.view.lkml"                       # include all views in this project
 #   }
 # }
 
-explore: vw_users {
+explore: users {
   label: "Email Utilities"
   view_label: "Emails"
+  join: vw_users {
+    sql_on: ${users.email} = ${vw_users.email} ;;
+    relationship: one_to_one
+  }
   join: clients {
     sql_on: ${vw_users.id} = ${clients.user_id} ;;
     relationship: many_to_one
-    fields: [clients.id, clients.created_date, clients.do_not_email]
+    fields: [clients.do_not_email, clients.full_name]
   }
   join: appointments {
     sql_on: ${clients.id} = ${appointments.client_id} ;;
@@ -33,8 +37,8 @@ explore: vw_users {
   }
   join: nps_survey_complete {
     view_label: "NPS"
-    sql_on: ${clients.id} = ${nps_survey_complete.user_id};;
+    sql_on: ${users.id} = ${nps_survey_complete.user_id};;
     relationship: one_to_many
-    fields: [nps_survey_complete.timestamp_date, nps_survey_complete.score]
+    fields: [nps_survey_complete.timestamp_date, nps_survey_complete.score, nps_survey_complete.user_id]
   }
 }
