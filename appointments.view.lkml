@@ -123,7 +123,9 @@ view: appointments {
       month,
       quarter,
       year,
-      day_of_week
+      day_of_week,
+      hour,
+      hour_of_day
     ]
     sql: ${TABLE}.start_time ;;
   }

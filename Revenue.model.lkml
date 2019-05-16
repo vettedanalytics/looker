@@ -68,6 +68,11 @@ explore: appointments {
     sql_on: ${appointments.client_id} = ${clients.id} ;;
     relationship: many_to_one
   }
+  join: promo_codes {
+    sql_on: ${appointments.promo_code_id} = ${promo_codes.id} ;;
+    relationship: many_to_one
+    fields: [promo_codes.analytics_code, promo_codes.discount]
+  }
   join: vw_users {
     sql_on: ${clients.user_id} = ${vw_users.id} ;;
     relationship: one_to_one
