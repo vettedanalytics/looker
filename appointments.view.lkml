@@ -31,7 +31,6 @@ view: appointments {
   }
 
   dimension: client_id {
-    hidden: yes
     type: number
     sql: ${TABLE}.client_id ;;
   }
