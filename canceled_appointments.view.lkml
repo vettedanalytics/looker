@@ -60,6 +60,11 @@ view: canceled_appointments {
     sql: ${TABLE}.reasons ;;
   }
 
+  dimension: cancelation_reason {
+    type:  string
+    sql:  ${TABLE}.cancelation_reason ;;
+  }
+
   dimension: secondary_id {
     type: number
     sql: ${TABLE}.secondary_id ;;
