@@ -61,8 +61,12 @@ view: canceled_appointments {
   }
 
   dimension: cancelation_reason {
-    type:  string
-    sql:  ${TABLE}.cancelation_reason ;;
+    type: string
+    sql: ${TABLE}."cancelation_reason" ;;
+  }
+
+  set: cancelation_reason_count {
+    fields: [cancelation_reason, count]
   }
 
   dimension: secondary_id {
