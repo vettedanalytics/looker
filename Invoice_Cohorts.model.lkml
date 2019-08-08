@@ -27,4 +27,10 @@ explore: clients {
     relationship: one_to_many
     fields: [appointments.confirmed_appointments, appointments.confirmed, appointments.created_date, appointments.count, appointments.created_month ]
   }
+  join: service_area_zips{
+    view_label: "Service Areas"
+    sql_on: ${clients.zip_code} = ${service_area_zips.zipcode};;
+    relationship: one_to_one
+    fields: [service_area_zips.name]
+  }
   }
