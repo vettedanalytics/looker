@@ -86,7 +86,7 @@ explore: appointments {
     relationship:  one_to_many
   }
   join: vets {
-    sql_on: ${appointments.vet_id} = ${vets.id} ;;
+    sql_on: ${appointments.vet_id} = ${vets.id} or ${appointments.secondary_id} = ${vets.id} ;;
     relationship: many_to_one
   }
   join: client_faq {
