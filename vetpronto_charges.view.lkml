@@ -41,6 +41,7 @@ view: vetpronto_charges {
       week,
       month,
       quarter,
+      day_of_month,
       year
     ]
     sql: ${TABLE}.created ;;

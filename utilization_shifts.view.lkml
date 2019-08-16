@@ -66,8 +66,7 @@ view: utilization_shifts {
       week,
       month,
       quarter,
-      year,
-      day_of_month
+      year
     ]
     sql: ${TABLE}.created_at ;;
   }
@@ -81,7 +80,8 @@ view: utilization_shifts {
       week,
       month,
       quarter,
-      year
+      year,
+      day_of_month
     ]
     sql: ${TABLE}.date ;;
   }
