@@ -50,7 +50,8 @@ view: appointments {
       month,
       quarter,
       year,
-      day_of_week
+      day_of_week,
+      day_of_month
     ]
     sql: ${TABLE}.created_at ;;
   }
@@ -124,7 +125,8 @@ view: appointments {
       year,
       day_of_week,
       hour,
-      hour_of_day
+      hour_of_day,
+      day_of_month
     ]
     sql: ${TABLE}.start_time ;;
   }
