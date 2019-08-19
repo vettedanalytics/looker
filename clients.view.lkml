@@ -113,7 +113,6 @@ view: clients {
   }
 
   dimension: street_address {
-    hidden:  yes
     type: string
     sql: ${TABLE}.street_address ;;
   }
