@@ -51,13 +51,11 @@ view: clients {
   }
 
   dimension: first_name {
-    hidden:  yes
     type: string
     sql: ${TABLE}.first_name ;;
   }
 
   dimension: last_name {
-    hidden:  yes
     type: string
     sql: ${TABLE}.last_name ;;
   }
