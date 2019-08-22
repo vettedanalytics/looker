@@ -78,3 +78,5 @@ explore: adwords_combined_click_performance_reports {
   }
 
 }
+
+explore: marketing_spend {}
