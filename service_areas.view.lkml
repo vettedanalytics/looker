@@ -142,13 +142,9 @@ view: service_areas {
 
  dimension: is_home {
     type:  string
-    sql: case when  in ('314','315') then 'NY'
-  when ${id} in ('1','323','294') then 'SF'
-  when ${id} in ('300') then 'WLA'
-  when ${id} in ('301') then 'DTLA'
-  when ${id} in ('303','304','4','312','320','328','326','329') then 'Other_LA'
-  when ${id} in ('311','9','11') then 'Other_SF'
-  else 'other' ;;
+    sql: case
+  when ${id} in ('1','323','294','300') then 'Home'
+  else 'Auxillary' ;;
 }
 
   measure: count {
