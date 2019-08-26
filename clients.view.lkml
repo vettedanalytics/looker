@@ -39,7 +39,8 @@ view: clients {
       week,
       month,
       quarter,
-      year
+      year,
+      day_of_month
     ]
     sql: ${TABLE}.created_at ;;
     drill_fields: [full_name, first_name, user_id, combined_charges.customer_id]
