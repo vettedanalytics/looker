@@ -28,6 +28,6 @@ explore: utilization_shifts {
   join: service_areas {
     sql_on: ${utilization_shifts.service_area_id} = ${service_areas.id} ;;
     relationship: many_to_one
-    fields: [service_areas.name]
+    fields: [service_areas.name, service_areas.region]
   }
 }
