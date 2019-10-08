@@ -91,7 +91,9 @@ explore: segment_vetted_session_tracks {
     relationship: one_to_one
   }
 }
-
+explore: attribution_summary {
+  label: "Marketing Attribution - WIP"
+}
 # explore: funnel_explorer {
 #   join: sessions_trk {
 #     view_label: "sessions"
