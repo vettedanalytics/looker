@@ -22,7 +22,7 @@ view: service_area_zips {
 
   dimension: region {
     type: string
-    sql: ${TABLE} ;;
+    sql: ${TABLE}.region ;;
   }
 
   dimension: zipcode {
