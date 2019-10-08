@@ -1,6 +1,6 @@
 view: service_area_zips {
   derived_table: {
-    sql: select name, TRIM(UNNEST(zip_codes)) as zipcode from service_areas
+    sql: select name, region, TRIM(UNNEST(zip_codes)) as zipcode from service_areas
             where active=true and building=false
              ;;
   }
@@ -18,6 +18,11 @@ view: service_area_zips {
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
+  }
+
+  dimension: region {
+    type: string
+    sql: ${TABLE} ;;
   }
 
   dimension: zipcode {
