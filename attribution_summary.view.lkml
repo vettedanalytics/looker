@@ -101,6 +101,11 @@ view: attribution_summary {
     sql: ${TABLE}.region ;;
   }
 
+  dimension: home_service_area {
+    type: string
+    sql: ${TABLE}.home_service_area ;;
+  }
+
   dimension_group: server_received_pst {
     convert_tz: no
     type: time
