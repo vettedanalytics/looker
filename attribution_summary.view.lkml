@@ -12,6 +12,7 @@ view: attribution_summary {
   }
 
   dimension_group: call_started_pst {
+    convert_tz: no
     type: time
     timeframes: [
       raw,
@@ -41,6 +42,7 @@ view: attribution_summary {
   }
 
   dimension_group: client_created_pst {
+    convert_tz: no
     type: time
     timeframes: [
       raw,
@@ -65,6 +67,7 @@ view: attribution_summary {
   }
 
   dimension_group: first_appt_created_pst {
+    convert_tz: no
     type: time
     timeframes: [
       raw,
@@ -99,6 +102,7 @@ view: attribution_summary {
   }
 
   dimension_group: server_received_pst {
+    convert_tz: no
     type: time
     timeframes: [
       raw,
