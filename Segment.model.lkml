@@ -94,6 +94,11 @@ explore: segment_vetted_session_tracks {
 explore: attribution_summary {
   label: "Marketing Attribution - WIP"
 }
+
+explore: marketing_spent {
+  label: "Marketing Spent"
+}
+
 # explore: funnel_explorer {
 #   join: sessions_trk {
 #     view_label: "sessions"
