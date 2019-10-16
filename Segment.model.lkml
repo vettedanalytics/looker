@@ -92,12 +92,17 @@ explore: segment_vetted_session_tracks {
   }
 }
 explore: attribution_summary {
-  label: "Marketing Attribution - WIP"
+  label: "Marketing Attribution "
 }
 
 explore: marketing_spent {
-  label: "Marketing Spent"
+  label: "Marketing Spend"
 }
+
+explore: daily_cac_summary {
+  label: "Daily CAC - WIP"
+}
+
 
 # explore: funnel_explorer {
 #   join: sessions_trk {

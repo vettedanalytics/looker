@@ -26,8 +26,9 @@ view: marketing_spent {
     sql: ${TABLE}.year_month ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
+  measure: sum {
+    label: "Sum of Spent"
+    type: sum
+    sql: ${TABLE}.spent ;;
   }
 }
