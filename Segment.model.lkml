@@ -95,12 +95,8 @@ explore: attribution_summary {
   label: "Marketing Attribution "
 }
 
-explore: marketing_spent {
-  label: "Marketing Spend"
-}
-
-explore: daily_cac_summary {
-  label: "Daily CAC - WIP"
+explore: daily_spend_summary {
+  label: "Daily Marketing Spend - WIP"
 }
 
 
