@@ -96,11 +96,11 @@ explore: attribution_summary {
 }
 
 explore: daily_spend_summary {
-  label: "Daily Marketing Spend - WIP"
+  label: "Daily Marketing Spend"
 }
 
 explore: daily_cac {
-  label: "Daily CAC - WIP"
+  label: "Daily CAC"
 }
 
 

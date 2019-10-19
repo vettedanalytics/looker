@@ -26,7 +26,7 @@ view: daily_spend_summary {
       quarter,
       year
     ]
-    convert_tz: no
+   # convert_tz: no
     datatype: date
     sql: ${TABLE}.date ;;
   }

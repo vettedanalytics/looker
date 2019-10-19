@@ -30,7 +30,7 @@ view: daily_cac {
       quarter,
       year
     ]
-    convert_tz: no
+    #convert_tz: no
     datatype: date
     sql: ${TABLE}.date ;;
   }
@@ -41,6 +41,7 @@ view: daily_cac {
   }
 
   dimension: channel {
+    description: "Last Touch Channel"
     type: string
     sql: ${TABLE}.channel ;;
   }
