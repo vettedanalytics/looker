@@ -37,6 +37,7 @@ view: daily_spend_summary {
   }
 
   dimension: renamed_channel {
+    description: "This can be linked with Last touch channel (or First touch channel) in the Marketing Attribution explorer"
     type: string
     sql: ${TABLE}.renamed_channel ;;
   }

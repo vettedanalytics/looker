@@ -99,6 +99,10 @@ explore: daily_spend_summary {
   label: "Daily Marketing Spend - WIP"
 }
 
+explore: daily_cac {
+  label: "Daily CAC - WIP"
+}
+
 
 # explore: funnel_explorer {
 #   join: sessions_trk {
