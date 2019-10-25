@@ -68,6 +68,11 @@ explore: appointments {
     sql_on: ${appointments.client_id} = ${clients.id} ;;
     relationship: many_to_one
   }
+  join: zipcode_region {
+    type:  full_outer
+    sql_on: ${clients.zip_code} = ${zipcode_region.zipcode} ;;
+    relationship: one_to_one
+  }
   join: promo_codes {
     sql_on: ${appointments.promo_code_id} = ${promo_codes.id} ;;
     relationship: many_to_one
