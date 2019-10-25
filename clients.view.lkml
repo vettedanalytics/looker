@@ -109,8 +109,26 @@ view: clients {
   }
 
   dimension: state {
+    label: "State (Raw)"
+    hidden: yes
     type: string
     sql: ${TABLE}.state ;;
+  }
+
+  dimension: state_group {
+    label: "State"
+    type: string
+    sql: case when lower(${TABLE}.state) = 'ca' or ${TABLE}.state = '90292' then 'CA'
+          else case when lower(${TABLE}.state) = 'new york' then 'NY'
+                else case when lower(${TABLE}.state) = 'maryland' then 'MD'
+                      else case when lower(${TABLE}.state) = 'illinois' then 'IL'
+                              else case when lower(${TABLE}.state) ilike '%columbia' then 'DC'
+                                     else ${TABLE}.state
+                                    end
+                           end
+                     end
+               end
+         end;;
   }
 
   dimension: street_address {
