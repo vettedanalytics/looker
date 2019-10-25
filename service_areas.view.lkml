@@ -109,6 +109,21 @@ view: service_areas {
     sql: ${TABLE}.region ;;
   }
 
+  # This hard-coded dimension needs to be updated if there is any change on data.
+
+  dimension: region_group {
+    type: string
+    sql: case when (${TABLE}.region ilike '%SF%' and ${TABLE}.region not ilike '%LA%') or ${TABLE}.region ilike '%bay%' or ${TABLE}.region = 'Peninsula' then 'NOCAL'
+              else case when ${TABLE}.region ilike '%LA%' or ${TABLE}.region ilike 'orange%' then 'SOCAL'
+                      else case when ${TABLE}.region ilike '%NY%' or ${TABLE}.region ilike '%DC%' then 'NORTHEAST'
+                              else case when ${TABLE}.region is null or ${TABLE}.region = '' then 'UNKNOWN'
+                                     else 'OTHER'
+                                   end
+                           end
+                   end
+          end ;;
+  }
+
   dimension: self_scheduled {
     hidden:  yes
     type: yesno
