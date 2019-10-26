@@ -99,8 +99,12 @@ explore: daily_spend_summary {
   label: "Daily Marketing Spend"
 }
 
-explore: daily_cac {
-  label: "Daily CAC"
+explore: daily_cac_last_touch_channel {
+  label: "Daily CAC - Last Touch Channel"
+}
+
+explore: daily_cac_first_touch_channel {
+  label: "Daily CAC - First Touch Channel"
 }
 
 

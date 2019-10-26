@@ -1,4 +1,4 @@
-view: daily_cac {
+view: daily_cac_last_touch_channel {
   derived_table: {
     sql: select coalesce(a.date, b.date) as date,
                coalesce(a.region, b.region) as region,
@@ -46,6 +46,13 @@ view: daily_cac {
     sql: ${TABLE}.channel ;;
   }
 
+  dimension: channel_type {
+    type: string
+    sql: case when lower(${TABLE}.channel) ilike 'paid%' or lower(${TABLE}.channel) in ('yelp', 'slm', 'acquisition', 'referral', 'offline', 'nextdoor') then 'Paid'
+            else 'Organic'
+         end;;
+  }
+
   dimension: new_users {
     label: "Daily New Users"
     type: number
@@ -58,12 +65,14 @@ view: daily_cac {
   }
 
   measure: sum_of_daily_new_users {
+    label: "Count of New Users"
     type: sum
     sql: ${TABLE}.new_users ;;
     drill_fields: [detail*]
   }
 
   measure: sum_of_daily_spend {
+    label: "Total Marketing Spend"
     type: sum
     sql: ${TABLE}.daily_spend ;;
     drill_fields: [detail*]
