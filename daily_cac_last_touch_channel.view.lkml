@@ -48,7 +48,7 @@ view: daily_cac_last_touch_channel {
 
   dimension: channel_type {
     type: string
-    sql: case when lower(${TABLE}.channel) ilike 'paid%' or lower(${TABLE}.channel) in ('yelp', 'slm', 'acquisition', 'referral', 'offline', 'nextdoor') then 'Paid'
+    sql: case when lower(${TABLE}.channel) ilike 'paid%' or lower(${TABLE}.channel) in ('yelp', 'experimental', 'slm', 'acquisition', 'referral', 'offline', 'nextdoor') then 'Paid'
             else 'Organic'
          end;;
   }
