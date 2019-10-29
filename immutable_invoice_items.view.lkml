@@ -51,8 +51,10 @@ view: immutable_invoice_items {
   }
 
   dimension: amount {
+    label: "Price"
     type: number
     sql: ${TABLE}.amount ;;
+    value_format_name: usd
   }
 
   dimension: category {
@@ -76,7 +78,6 @@ view: immutable_invoice_items {
   }
 
   dimension: invoice_id {
-    hidden: yes
     type: number
     sql: ${TABLE}.invoice_id ;;
   }
