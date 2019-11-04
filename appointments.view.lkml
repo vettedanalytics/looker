@@ -169,7 +169,7 @@ view: appointments {
 
   dimension: is_secondary {
     type:  string
-    sql: case when ${TABLE}.secondary_id is not null then 'Non-Secondary' else 'Secondary' end;;
+    sql: case when ${TABLE}.secondary_id is not null then 'Secondary' else 'Non-Secondary' end;;
   }
 
   measure: count {
