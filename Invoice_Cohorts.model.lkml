@@ -33,4 +33,9 @@ explore: clients {
     relationship: one_to_one
     fields: [service_area_zips.name]
   }
+  join: zipcode_region {
+    type:  inner
+    sql_on: ${clients.zip_code} = ${zipcode_region.zipcode} ;;
+    relationship: one_to_one
+  }
   }
