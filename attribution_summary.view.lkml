@@ -86,9 +86,23 @@ view: attribution_summary {
     sql: ${TABLE}.first_touch_channel ;;
   }
 
+  dimension: first_touch_channel_type {
+    type: string
+    sql: case when lower(${TABLE}.first_touch_channel) ilike 'paid%' or lower(${TABLE}.first_touch_channel) in ('yelp', 'slm', 'acquisition', 'referral', 'offline', 'nextdoor') then 'Paid'
+            else 'Organic'
+         end;;
+  }
+
   dimension: last_touch_channel {
     type: string
     sql: ${TABLE}.last_touch_channel ;;
+  }
+
+  dimension: last_touch_channel_type {
+    type: string
+    sql: case when lower(${TABLE}.last_touch_channel) ilike 'paid%' or lower(${TABLE}.last_touch_channel) in ('yelp', 'slm', 'acquisition', 'referral', 'offline', 'nextdoor') then 'Paid'
+            else 'Organic'
+         end;;
   }
 
   dimension: phone_number {
