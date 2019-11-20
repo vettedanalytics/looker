@@ -51,7 +51,8 @@ view: attribution_summary {
       week,
       month,
       quarter,
-      year
+      year,
+      day_of_month
     ]
     sql: ${TABLE}.client_created_pst ;;
   }

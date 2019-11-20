@@ -173,6 +173,11 @@ view: clients {
     drill_fields: [id, secondary_last_name, secondary_first_name, last_name, first_name, full_name]
   }
 
+  measure: count_distinct {
+    type: count_distinct
+    sql: ${id};;
+  }
+
   measure: count_running_total {
     type: running_total
     sql: ${count} ;;
