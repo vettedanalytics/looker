@@ -167,6 +167,11 @@ view: appointments {
     sql: ${client_faq.first_appointment_time} = ${start_time};;
   }
 
+  dimension: is_secondary {
+    type:  string
+    sql: case when ${TABLE}.secondary_id is not null then 'Secondary' else 'Non-Secondary' end;;
+  }
+
   measure: count {
     label: "Count of Appointments"
     type: count

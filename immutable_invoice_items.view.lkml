@@ -62,6 +62,11 @@ view: immutable_invoice_items {
     sql: ${TABLE}.category ;;
   }
 
+  dimension: is_euthanasia {
+    type: string
+    sql: case when ${TABLE}.category = 'Euthanasia' then 'Euthanasia' else 'Non-Euthanasia' end  ;;
+  }
+
   dimension_group: created {
     type: time
     timeframes: [
