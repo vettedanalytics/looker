@@ -33,6 +33,7 @@ view: doctor_availability {
   dimension: service_area {
     type: string
     sql: ${TABLE}."service area" ;;
+    case_sensitive: no
   }
 
   dimension: service_area_id {
