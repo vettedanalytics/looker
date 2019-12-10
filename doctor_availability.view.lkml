@@ -86,8 +86,8 @@ view: doctor_availability {
     sql: ${TABLE}.vetid ;;
   }
 
-  measure: count {
-    type: count
+  measure: sum {
+    type: sum
     drill_fields: [vet_name]
   }
 }
