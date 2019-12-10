@@ -89,6 +89,5 @@ view: doctor_availability {
   measure: sum {
     type: sum
     sql: ${TABLE}.slots ;;
-    drill_fields: [vet_name]
   }
 }
