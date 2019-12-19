@@ -174,6 +174,16 @@ view: invoice_summary {
     sql: ${TABLE}.vet_name ;;
   }
 
+  dimension: service_area {
+    type:  string
+    sql:  ${TABLE}.service_area ;;
+  }
+
+  dimension: service_area_id {
+    type: number
+    sql:  ${TABLE}.service_area_id ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [technician_name, client_name, vet_name]
