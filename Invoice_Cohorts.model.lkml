@@ -29,8 +29,8 @@ explore: clients {
   }
   join: service_area_zips{
     view_label: "Service Areas"
-    sql_on: ${clients.zip_code} = ${service_area_zips.zipcode};;
-    relationship: one_to_one
+    sql_on:  ${clients.zip_code} = ${service_area_zips.zipcode} ;;
+    relationship: many_to_one
     fields: [service_area_zips.name, service_area_zips.region]
   }
   join: zipcode_region {
