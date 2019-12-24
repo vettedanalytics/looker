@@ -86,6 +86,12 @@ view: doctor_availability {
     sql: ${TABLE}.vetid ;;
   }
 
+  dimension: service_metro_area {
+    type: string
+    sql: ${TABLE}."service metro area" ;;
+    case_sensitive: no
+  }
+
   measure: sum {
     type: sum
     sql: ${TABLE}.slots ;;
