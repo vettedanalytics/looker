@@ -42,7 +42,7 @@ view: doctor_availability {
   }
 
   dimension: slotmonth {
-    type: date_month_num
+    type: date_month
     sql: ${TABLE}.slotdate ;;
   }
 
