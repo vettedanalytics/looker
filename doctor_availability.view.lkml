@@ -41,6 +41,11 @@ view: doctor_availability {
     sql: ${TABLE}."service area id" ;;
   }
 
+  dimension: slotmonth {
+    type: date_month_num
+    sql: ${TABLE}.slotdate ;;
+  }
+
   dimension_group: slotdate {
     type: time
     timeframes: [
