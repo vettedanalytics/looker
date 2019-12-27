@@ -25,7 +25,7 @@ explore: clients {
     view_label: "Appointments"
     sql_on: ${clients.id} = ${appointments.client_id} ;;
     relationship: one_to_many
-    fields: [appointments.confirmed_appointments, appointments.confirmed, appointments.created_date, appointments.count, appointments.created_month ]
+    fields: [appointments.confirmed_appointments, appointments.confirmed, appointments.created_date, appointments.count, appointments.created_month, appointments.running_total_appointments ]
   }
   join: service_area_zips{
     view_label: "Service Areas"
