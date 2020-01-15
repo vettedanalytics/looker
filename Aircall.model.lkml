@@ -20,3 +20,19 @@ include: "*.view.lkml"                       # include all views in this project
 explore: aircall_call {
   label: "Aircall Calls"
 }
+
+explore: aircall_contact {
+  label: "Aircall Contacts"
+}
+
+explore: aircall_number {
+  label: "Aircall Numbers"
+}
+
+explore: aircall_team {
+  label: "Aircall Team"
+}
+
+explore: aircall_user {
+  label: "Aircall Users"
+}
