@@ -1,5 +1,5 @@
 view: vets {
-  sql_table_name: postgres_database.vets ;;
+  sql_table_name: raw_data.vets ;;
 
   dimension: id {
     primary_key: yes

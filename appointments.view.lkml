@@ -1,5 +1,5 @@
 view: appointments {
-  sql_table_name: postgres_database.appointments ;;
+  sql_table_name: raw_data.appointments ;;
 
   dimension: id {
     primary_key: yes

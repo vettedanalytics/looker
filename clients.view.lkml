@@ -1,5 +1,5 @@
 view: clients {
-  sql_table_name: postgres_database.clients ;;
+  sql_table_name: raw_data.clients ;;
 
   dimension: id {
     primary_key: yes

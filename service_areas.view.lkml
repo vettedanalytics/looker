@@ -1,52 +1,10 @@
 view: service_areas {
-  sql_table_name: postgres_database.service_areas ;;
+  sql_table_name: raw_data.service_areas ;;
 
   dimension: id {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
-  }
-
-  dimension_group: _sdc_batched {
-    hidden:  yes
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}._sdc_batched_at ;;
-  }
-
-  dimension_group: _sdc_received {
-    hidden:  yes
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}._sdc_received_at ;;
-  }
-
-  dimension: _sdc_sequence {
-    hidden:  yes
-    type: number
-    sql: ${TABLE}._sdc_sequence ;;
-  }
-
-  dimension: _sdc_table_version {
-    hidden:  yes
-    type: number
-    sql: ${TABLE}._sdc_table_version ;;
   }
 
   dimension: active {

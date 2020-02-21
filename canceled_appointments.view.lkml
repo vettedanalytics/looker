@@ -1,5 +1,5 @@
 view: canceled_appointments {
-  sql_table_name: postgres_database.canceled_appointments ;;
+  sql_table_name: raw_data.canceled_appointments ;;
 
   dimension: id {
     primary_key: yes
