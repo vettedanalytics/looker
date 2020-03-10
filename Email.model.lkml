@@ -26,9 +26,8 @@ explore: users {
     relationship: one_to_one
   }
   join: clients {
-    sql_on: ${vw_users.id} = ${clients.user_id} ;;
-    relationship: many_to_one
-    fields: [clients.do_not_email, clients.full_name]
+    sql_on: ${users.id} = ${clients.user_id} ;;
+    relationship: one_to_one
   }
   join: appointments {
     sql_on: ${clients.id} = ${appointments.client_id} ;;
