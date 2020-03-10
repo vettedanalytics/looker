@@ -165,7 +165,7 @@ view: clients {
 
   dimension: zip_code {
     type: zipcode
-    sql: ${TABLE}.zip_code__bigint ;;
+    sql: ${TABLE}.zip_code ;;
   }
 
   measure: count {
