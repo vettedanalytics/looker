@@ -83,8 +83,9 @@ explore: appointments {
     relationship: one_to_one
   }
   join: users {
-    sql_on: ${vw_users.id} = ${users.id} ;;
+    sql_on: ${clients.user_id} = ${users.id} ;;
     relationship: many_to_one
+    required_joins: [clients]
   }
   join: appointment_patients {
     sql_on: ${appointments.id} = ${appointment_patients.appointment_id};;
